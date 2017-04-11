@@ -16,7 +16,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BookViewComponent } from './book-view/book-view.component';
 import { BookTileComponent } from './book-tile/book-tile.component';
 import { BookLineComponent } from './book-line/book-line.component';
- 
+ import {LibraryServiceService} from './library-service.service';
+
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { BookLineComponent } from './book-line/book-line.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LibraryServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

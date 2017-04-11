@@ -15,11 +15,23 @@
 
   </div>
 </div>
-<div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" *ngFor="let item of books">
-    <app-book-tile [book]="item"></app-book-tile>
+<style>
+  .container {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  flex-wrap: wrap ;
+    justify-content: center ;
+      align-items:  center ;
+  align-content:  center;
+
+
+}
+</style>
+<div class="container">
+  <div class="flex-item" *ngFor="let item of books"  >
+    <app-book-tile *ngIf="item.Url!=''" [book]="item"></app-book-tile>
   </div>
 </div>
-
+ 
 
 <div></div>

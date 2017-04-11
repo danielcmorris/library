@@ -4,6 +4,8 @@ import 'rxjs/add/operator/switchMap';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import {LibraryServiceService} from '../library-service.service';
+
 @Component({
   selector: 'app-catalog-list',
   templateUrl: './catalog-list.component.html',
@@ -13,12 +15,13 @@ export class CatalogListComponent implements OnInit {
   public sub: any;
   public subject: any;
   public book: any;
-  public books: any;
+  public books: any=[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private http: Http) { }
+    private http: Http, 
+    private Lib: LibraryServiceService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -28,17 +31,15 @@ export class CatalogListComponent implements OnInit {
 
       // In a real app: dispatch action to load the details here.
     });
-
-
-
-    this.http.get('http://api.pfsa.morrisdev.com/api/library/search').map(res => res.json()).subscribe(data => {
-      this.books = data;
-      console.log(data)
-    },
+  //this.books = data;
+    this.Lib.getBooks().subscribe(data => {this.books=data },
       err => {
-        console.log("Oops!");
+        console.log("ERROR GETTING DATA!");
       });
+
   }
-
-
+  Search(){
+    console.log( this.books);
+  
+  }
 } 

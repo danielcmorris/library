@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LibraryServiceService} from '../library-service.service';
 
 @Component({
   selector: 'app-home',
@@ -10,27 +11,16 @@ export class HomeComponent implements OnInit {
   books:any =[];
 
 
-  constructor() { }
+  constructor(private lib:LibraryServiceService ) { }
 
   ngOnInit() {
-    this.book = {};
-    let b = this.book
-    b.callnumber = 123;
-    b.title = 'Chasing the Dream';
-    b.description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do tempor incididunt ut labore et dolore magna aliqua. Ut enim ad...";
-    b.author = "By Melo, JC d"
+     
+    this.lib.getBooks().subscribe(data => {this.books=data },
+      err => {
+        console.log("ERROR GETTING DATA!");
+      });
 
-
-    this.books.push(b);
-    this.books.push(b);
-    this.books.push(b);
-    this.books.push(b);
-    this.books.push(b);
-    this.books.push(b);
-    this.books.push(b);
-    this.books.push(b);
-    this.books.push(b);
-    this.books.push(b);
+ 
     
 
   }

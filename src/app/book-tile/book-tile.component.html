@@ -1,13 +1,9 @@
-<md-card >
-  <md-card-title>{{book.title}}</md-card-title>
-  <md-card-subtitle>{{book.author}}</md-card-subtitle>
-  <img md-card-image src="https://d2rg9t5epa49og.cloudfront.net/E1723/20161213T104126.Png">
-  <md-card-content>
-    <p>
-      {{book.description}}
-    </p>
-  </md-card-content>
+<md-card style="width:310px;margin:10px;" >
+  <img md-card-image style="width:300px" [src]="'https://d2rg9t5epa49og.cloudfront.net/'+book.Url">
+  <md-card-title>{{book.Title}}</md-card-title>
+  <md-card-subtitle>{{book.Author}}</md-card-subtitle>
+  <md-card-content></md-card-content>
   <md-card-actions>
-    <button md-raised-button color="primary" [routerLink]="['/catalog/view/',book.callnumber]">View</button>
+    <button md-raised-button color="primary" [routerLink]="['/catalog/view/',book.CallNumber]">View</button>
   </md-card-actions>
 </md-card>

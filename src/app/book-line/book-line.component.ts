@@ -7,9 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BookLineComponent implements OnInit {
  @Input() book:any;
-  constructor() { }
+  constructor() { 
+    
+  }
 
   ngOnInit() {
+   
   }
+
 
 }
