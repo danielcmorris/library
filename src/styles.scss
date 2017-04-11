@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+.siteLogo{
+    height:120px;
+    width: 100%;
+    background-image:url(/assets/logo.png);
+    background-repeat: no-repeat;
+    }
+     body{
+         font-family: calibri, "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+         font-size: 14pt;
+         color:#546E7A;
+     }
+     P{font-family: calibri, "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+         font-size: 14pt;
+         color:#546E7A;}
+.siteTitle{font-family: 'Open Sans', sans-serif;font-size:14pt;}
+
+.dropdown A{
+        float: left;
+        padding: 15px 15px;
+        font-size: 18px;
+        line-height: 20px;
+        height: 45px;
+}

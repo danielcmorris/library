@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-sm-2">
+    <img style="display:block" *ngIf="book.Url!=''" [src]="'https://d2rg9t5epa49og.cloudfront.net/'+book.Url" width="100" >
+    <div style="padding-left:20px"><a [routerLink]="['/catalog/view/',book.CallNumber]">GA1855</a></div>
+  </div>
+  <div class="col-sm-2"><a [routerLink]="['/catalog/view/',book.CallNumber]">{{book.Title}}</a></div>
+  <div class="col-sm-2"><a [routerLink]="['/authors/',book.Author]">{{book.Author}}</a></div>
+  <div class="col-sm-2"><a [routerLink]="['/catalog/',book.Subject]">{{book.Subject}}</a></div>
+  <div class="col-sm-2">{{book.Status}}</div>
+</div>

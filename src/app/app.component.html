@@ -1,4 +1,18 @@
-<h1>
-  {{title}}
-</h1>
-<router-outlet></router-outlet>
+<div class="container-fluid siteheader" style="margin:0px;padding:0px">
+    <div class="row" style="margin:0px;padding:0px">
+        <div class="col-md-3 col-sm-5">
+            <div class="siteLogo"></div>
+        </div>
+        <div class="col-md-8 col-sm-7 hidden-xs" style="text-align: center">
+            <h2>The J.A. Freitas Library</h2>
+            <span class="siteTitle">Founded in 1964, the J.A. Freitas Library consists of over 1200 works dealing with the Portuguese,
+            some dating back to the late 1880's</span>
+        </div>
+   
+
+    </div>
+
+<app-navbar></app-navbar>
+<div class="container siteheader" style="padding-top:50px">
+    <router-outlet></router-outlet>
+</div>

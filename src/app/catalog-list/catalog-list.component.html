@@ -1,0 +1,11 @@
+<h1>
+  Catalog List
+</h1>
+<h3>{{subject}}</h3>
+ 
+
+ 
+  
+ <div *ngFor="let item  of books">
+    <app-book-line [book]="item"></app-book-line>
+ </div>
