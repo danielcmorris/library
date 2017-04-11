@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
   
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MdButtonModule, MdCardModule, MdListModule} from '@angular/material';
+import { MdButtonModule, MdCardModule, MdListModule, MdIconModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,7 @@ import { BookTileComponent } from './book-tile/book-tile.component';
 import { BookLineComponent } from './book-line/book-line.component';
  import {LibraryService} from './library.service';
 import { BookingHistoryComponent } from './booking-history/booking-history.component';
+import { DanComponent } from './dan/dan.component';
 
 
 
@@ -33,13 +34,15 @@ import { BookingHistoryComponent } from './booking-history/booking-history.compo
     BookViewComponent,
     BookTileComponent,
     BookLineComponent,
-    BookingHistoryComponent
+    BookingHistoryComponent,
+    DanComponent
   ],
   imports: [
     BrowserAnimationsModule,
      MdButtonModule,
      MdCardModule,
      MdListModule,
+     MdIconModule.forRoot(),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

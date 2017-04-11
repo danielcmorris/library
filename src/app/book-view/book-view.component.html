@@ -2,31 +2,45 @@
   <md-card-title-group>
 
     <md-card-title>{{book.Title}}</md-card-title>
-    <md-card-subtitle>{{book.Author}}</md-card-subtitle>
+    <md-card-subtitle>By {{book.Author}}</md-card-subtitle>
   </md-card-title-group>
-  <md-card-content style="vertical-align: text-top;">
-    <div style="width:100%;padding-left:330px;margin-left:-330px;float:right;">
-      <p> {{book.Notes}}</p>
-      <ul>
-        <li>By {{book.Author}}</li>
-        <li>Subject: {{book.Subject}}</li>
-        <li>Call Number: {{book.CallNumber}}</li>
-        <li>Availability: {{book.Status}}</li>
-      </ul>
+  <md-card-content style="vertical-align: text-top;min-height: 400px">
+    <p>
+      <img *ngIf="book.Url!=''" ALIGN="Left" style="margin:10px" [src]="getUrl(book.Url)">
+      <span [innerHTML]="book.Notes"></span>
+    </p>
+
+    <div>
+      <div style="float:right;width:40%;padding:20px;border:solid 1px lightgray">
+        <div style="width:200px;margin:auto;">
+          <button md-raised-button style="width:100%;background-color:#106CC8;color:white;margin:10px;" [routerLink]="['/catalog/view/',book.Prefix, book.BookNumber]">Request</button>
+          <button md-raised-button style="width:100%;color:black;margin:10px;" [routerLink]="['/catalog']">Catalog</button>
+        </div>
+      </div>
       <md-list>
-        <md-list-item> Pepper </md-list-item>
-        <md-list-item> Salt </md-list-item>
-        <md-list-item> Paprika </md-list-item>
+        <md-list-item>
+          <i class="material-icons">person</i>&nbsp;By {{book.Author}}
+        </md-list-item>
+        <md-list-item>
+          <i class="material-icons">subject</i>&nbsp;Subject: {{book.Subject}} </md-list-item>
+        <md-list-item>
+          <i class="material-icons">account_balance</i>&nbsp;Call Number: {{book.Prefix}}{{book.BookNumber}} </md-list-item>
+        <md-list-item> <i class="material-icons">event_available</i>&nbsp;Availability: Currently {{book.Status}}</md-list-item>
       </md-list>
-      <button md-raised-button color="primary" [routerLink]="['/catalog/view/',book.CallNumber]">View</button>
-      <app-booking-history [prefix]="book.Prefix" [booknumber]="book.BookNumber"></app-booking-history>
     </div>
-    <div style="width:300px;height:100%;">
-      <img *ngIf="book.Url!=''" style="margin:10px;width:300px;" [src]="getUrl(book.Url)">
-    </div>
+
 
   </md-card-content>
   <md-card-actions>
 
   </md-card-actions>
+</md-card>
+<div>&nbsp;</div>
+<md-card>
+
+  <md-card-title>History</md-card-title>
+
+  <md-card-content>
+    <app-booking-history [prefix]="book.Prefix" [booknumber]="book.BookNumber"></app-booking-history>
+  </md-card-content>
 </md-card>

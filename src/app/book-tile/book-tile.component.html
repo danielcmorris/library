@@ -1,4 +1,4 @@
-<md-card style="width:310px;margin:10px;" >
+<md-card style="width:310px;margin:10px;" [routerLink]="['/catalog/view/',book.Prefix, book.BookNumber]" >
   <img md-card-image style="width:300px" [src]="'https://d2rg9t5epa49og.cloudfront.net/'+book.Url">
   <md-card-title>{{book.Title}}</md-card-title>
   <md-card-subtitle>{{book.Author}}</md-card-subtitle>

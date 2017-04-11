@@ -10,8 +10,8 @@ import { Book } from "./models/book";
 export class LibraryService {
 
   public books: Observable<Book[]>;
-  public apiHost: string = 'http://api.pfsa.morrisdev.com';
-
+  //public apiHost: string = 'http://api.pfsa.morrisdev.com';
+  public apiHost: string = 'http://localhost:53035'
   constructor(private http: Http) { }
 
 

@@ -1,11 +1,22 @@
-<h1>
-  Catalog List
-</h1>
-<h3>{{subject}}</h3>
- 
+<div style="background-color:teal;color:white">
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+
+      <h1>
+        Catalog List
+      </h1>
+      <h3>{{subject}}</h3>
+    </div>
+  </div>
+</div>
+</div>
+<div style="background-color:beige;padding:10px;">
+  <div class="container" style="background-color: white;padding:20px;border:lightgray solid 1px">
+    <div *ngFor="let item  of books">
+      <app-book-line [book]="item"></app-book-line><br><br>
+    </div>
+  </div>
+</div>
  
-  <button (click)="DebugMe()">Debug</button>
- <div *ngFor="let item  of books">
-    <app-book-line [book]="item"></app-book-line>
- </div>

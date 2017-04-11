@@ -1,37 +1,53 @@
-<div class="row">
-  <div class="col-md-6">
-
-    <p>
-      The library collection consists of over 12,000 works dealing with the Portuguese throughout the world. It holds a vast number
-      of books on the Azores and a fairly complete sample of periodicals published by the Portuguese in California, some
-      dating to the late 1880's. The library contains many historical materials on Portuguese from all over the world. We
-      provide our community with various magazines, periodicals, albums, videos, micro films, etc. Most of the collection
-      circulates for periods of two weeks each and books can be requested from anywhere in California through interlibrary
-      loan services provided by a network of public and academic libraries throughout California.
-    </p>
-  </div>
-  <div class="col-md-6">
-    <img src="/assets/library.jpg" style="float:right;margin:10px;">
-
-  </div>
-</div>
-<style>
-  .container {
-  display: flex; /* or inline-flex */
-  flex-direction: row;
-  flex-wrap: wrap ;
-    justify-content: center ;
-      align-items:  center ;
-  align-content:  center;
-
-
-}
-</style>
-<div class="container">
-  <div class="flex-item" *ngFor="let item of books"  >
-    <app-book-tile *ngIf="item.Url!=''" [book]="item"></app-book-tile>
-  </div>
-</div>
  
-
-<div></div>
+  <div style="background-color:#3D9970">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+      
+           <div style="padding:20px;">
+       <md-card style="height:500px">
+         <md-card-title>Welcome to the J.A. Freitas Library</md-card-title>
+        
+         <md-card-content>
+      
+          <p>
+              <img md-card-lg-image src="/assets/library.jpg" align="right" style="height:400px;margin:15px"> <br>The library collection consists of over 12,000 works dealing with the Portuguese throughout the world. It holds a vast number
+            of books on the Azores and a fairly complete sample of periodicals published by the Portuguese in California,
+            some dating to the late 1880's. The library contains many historical materials on Portuguese from all over the
+            world. We provide our community with various magazines, periodicals, albums, videos, micro films, etc. Most of
+            the collection circulates for periods of two weeks each and books can be requested from anywhere in California
+            through interlibrary loan services provided by a network of public and academic libraries throughout California.
+            
+          </p>
+          </md-card-content></md-card>
+            </div>
+        </div>
+       
+      </div>
+    </div>
+      </div>
+ 
+    <style>
+      .container {
+        padding-top: 20px;
+        display: flex;
+        /* or inline-flex */
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: center;
+        /*   align-items: center;  this would make them align vertically to the center for each row */
+      }
+    </style>
+     <div style="background-color:whitesmoke;padding-bottom: 10px;">
+    <div class="container">
+    <h1>Latest Additions to our Catalog</h1>
+    </div>
+     </div>
+  <div style="background-color:antiquewhite;border-top:solid lightgray 1px">
+    <div class="container">
+      <div class="flex-item" *ngFor="let item of books">
+        <app-book-tile *ngIf="item.Url!=''" [book]="item"></app-book-tile>
+      </div>
+    </div>
+      </div>

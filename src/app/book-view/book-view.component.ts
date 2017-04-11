@@ -7,16 +7,15 @@ import { LibraryService } from '../library.service';
   selector: 'app-book-view',
   templateUrl: './book-view.component.html',
   styleUrls: ['./book-view.component.scss'],
-   providers: []  
+  providers: []
 })
 export class BookViewComponent implements OnInit {
   sub: any;
   callnumber: string
   book: Book = new Book();
-  constructor(private route: ActivatedRoute, private router: Router,
-    private LibraryService: LibraryService 
-     
-    ) { }
+  constructor(
+    private route: ActivatedRoute, private router: Router,
+    private LibraryService: LibraryService) { }
 
   ngOnInit() {
     let prefix = '';
@@ -26,7 +25,7 @@ export class BookViewComponent implements OnInit {
       booknumber = params['booknumber'];
       prefix = params['prefix'];
       this.callnumber = prefix + booknumber.toString();
-      this.book.Title = "TEST"
+      this.book.Title = "Loading..."
       this.book.Prefix = prefix
       this.book.BookNumber = booknumber;
       this.book.Url = '';
@@ -40,6 +39,10 @@ export class BookViewComponent implements OnInit {
     return path;
   }
   LoadBook(p, bn) {
-    this.LibraryService.getBook(p, bn).subscribe(data => { this.book = data; })
+    this.LibraryService.getBook(p, bn).subscribe(data => { this.book = data;
+      //total hack I was working with while developing
+    this.book.Notes = this.book.Notes.replace('https://www.archive.org/stream/episdiosdram01baiuoft?ref=ol#page/n9/mode/2up',
+    '<a href="https://www.archive.org/stream/episdiosdram01baiuoft?ref=ol#page/n9/mode/2up" target="_blank">https://www.archive.org/stream/episdiosdram01baiuoft?ref=ol#page/n9/mode/2up</a>');
+   })
   }
 }
