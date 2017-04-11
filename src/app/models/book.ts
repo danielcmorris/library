@@ -1,4 +1,4 @@
-export interface Book {
+export class Book {
     BookId:number;
     CallNumber:string;
     BookNumber:number;
@@ -15,3 +15,4 @@ export interface Book {
     Url:string;
 
 }
+
