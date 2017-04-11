@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LibraryServiceService} from '../library-service.service';
+import {LibraryService} from '../library.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   books:any =[];
 
 
-  constructor(private lib:LibraryServiceService ) { }
+  constructor(private lib:LibraryService ) { }
 
   ngOnInit() {
      

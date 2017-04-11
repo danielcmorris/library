@@ -1,9 +1,32 @@
-<md-card style="width:310px;margin:10px;" >
-  <img md-card-image style="width:300px" [src]="'https://d2rg9t5epa49og.cloudfront.net/'+book.Url">
-  <md-card-title>{{book.Title}}</md-card-title>
-  <md-card-subtitle>{{book.Author}}</md-card-subtitle>
-  <md-card-content></md-card-content>
+<md-card>
+  <md-card-title-group>
+
+    <md-card-title>{{book.Title}}</md-card-title>
+    <md-card-subtitle>{{book.Author}}</md-card-subtitle>
+  </md-card-title-group>
+  <md-card-content style="vertical-align: text-top;">
+    <div style="width:100%;padding-left:330px;margin-left:-330px;float:right;">
+      <p> {{book.Notes}}</p>
+      <ul>
+        <li>By {{book.Author}}</li>
+        <li>Subject: {{book.Subject}}</li>
+        <li>Call Number: {{book.CallNumber}}</li>
+        <li>Availability: {{book.Status}}</li>
+      </ul>
+      <md-list>
+        <md-list-item> Pepper </md-list-item>
+        <md-list-item> Salt </md-list-item>
+        <md-list-item> Paprika </md-list-item>
+      </md-list>
+      <button md-raised-button color="primary" [routerLink]="['/catalog/view/',book.CallNumber]">View</button>
+      <app-booking-history [prefix]="book.Prefix" [booknumber]="book.BookNumber"></app-booking-history>
+    </div>
+    <div style="width:300px;height:100%;">
+      <img *ngIf="book.Url!=''" style="margin:10px;width:300px;" [src]="getUrl(book.Url)">
+    </div>
+
+  </md-card-content>
   <md-card-actions>
-    <button md-raised-button color="primary" [routerLink]="['/catalog/view/',book.CallNumber]">View</button>
+
   </md-card-actions>
 </md-card>

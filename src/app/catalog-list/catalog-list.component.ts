@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
-import {LibraryServiceService} from '../library-service.service';
+import 'rxjs/add/operator/switchMap';
+import {LibraryService} from '../library.service';
 
 @Component({
   selector: 'app-catalog-list',
@@ -21,7 +20,7 @@ export class CatalogListComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private http: Http, 
-    private Lib: LibraryServiceService) { }
+    private Lib: LibraryService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {

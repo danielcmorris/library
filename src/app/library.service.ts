@@ -4,10 +4,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Observable';
 import { Book } from "./models/book";
- 
+
 
 @Injectable()
-export class LibraryServiceService {
+export class LibraryService {
 
   public books: Observable<Book[]>;
   public apiHost: string = 'http://api.pfsa.morrisdev.com';
@@ -22,11 +22,16 @@ export class LibraryServiceService {
 
     //  return this.books;
   }
-  getBook(prefix:string,booknumber:string): Observable<Book> {
-    let url = `/api/library/catalog/${prefix}/${booknumber}`; 
+  getBook(prefix: string, booknumber: string): Observable<Book> {
+    let url = `/api/library/catalog/${prefix}/${booknumber}`;
     return this.http.get(this.apiHost + url)
       .map(res => res.json());
 
   }
-
+  getBookHistory(prefix: string, booknumber: number): Observable<any> {
+    //http://api.pfsa.morrisdev.com/library/catalog/GA/1855/history
+    let url = `/library/catalog/${prefix}/${booknumber}/history`;
+    return this.http.get(this.apiHost + url)
+      .map(res => res.json());
+  }
 }

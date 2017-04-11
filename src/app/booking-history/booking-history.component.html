@@ -1,0 +1,17 @@
+<h4>History</h4>
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <td>Date</td>
+      <td>User</td>
+      <td>Status</td>
+
+    </tr>
+    <tr *ngFor="let h of history">
+      <td>{{sqlToJsDate(h.CreateDate)}}</td>
+      <td>{{h.CreateBy}}</td>
+      <td>{{h.Status}}</td>
+
+    </tr>
+  </tbody>
+</table>

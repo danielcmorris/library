@@ -4,6 +4,6 @@
   <md-card-subtitle>{{book.Author}}</md-card-subtitle>
   <md-card-content></md-card-content>
   <md-card-actions>
-    <button md-raised-button color="primary" [routerLink]="['/catalog/view/',book.CallNumber]">View</button>
+    <button md-raised-button color="primary" [routerLink]="['/catalog/view/',book.Prefix, book.BookNumber]">View</button>
   </md-card-actions>
 </md-card>
