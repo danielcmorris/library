@@ -15,9 +15,17 @@ export class BookViewComponent implements OnInit {
   constructor(   private route: ActivatedRoute,  private router: Router) { }
 
   ngOnInit() {
-      this.sub = this.route.params.subscribe(params => {
-       this.callnumber = params['callnumber'];  
- 
+    let prefix='';
+    let booknumber ;
+
+      this.sub = this.route.params.subscribe(params => {        
+        booknumber = params['booknumber'];  
+        prefix = params['prefix'];  
+        this.callnumber = prefix+booknumber.toString();
+        this.book.Title = "TEST"
+        this.book.Prefix = prefix
+        this.book.BookNumber = booknumber;
+        this.book.Url = '';
     });
     
   }

@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: 'catalog', component: CatalogListComponent },
     { path: 'collection/add', component: BookEditorComponent },
     { path: 'collection/edit', component: BookEditorComponent },
-    { path: 'catalog/view/:prefix/:callnumber', component:BookViewComponent },
+    { path: 'catalog/view/:prefix/:booknumber', component:BookViewComponent },
     { path: 'catalog/recent', component: RecentEditionsComponent },
     { path: 'catalog/:subject', component: CatalogListComponent },
     { path: 'authors/:author', component: CatalogListComponent },
