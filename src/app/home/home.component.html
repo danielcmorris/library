@@ -39,12 +39,12 @@
         /*   align-items: center;  this would make them align vertically to the center for each row */
       }
     </style>
-     <div style="background-color:whitesmoke;padding-bottom: 10px;">
+     <div style="background-color:#5D4037;padding-bottom: 25px;">
     <div class="container">
-    <h1>Latest Additions to our Catalog</h1>
+    <h1 style="color:white">Latest Additions to our Catalog</h1>
     </div>
      </div>
-  <div style="background-color:antiquewhite;border-top:solid lightgray 1px">
+  <div style="background-color:teal;">
     <div class="container">
       <div class="flex-item" *ngFor="let item of books">
         <app-book-tile *ngIf="item.Url!=''" [book]="item"></app-book-tile>

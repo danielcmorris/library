@@ -1,20 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@import "palette.scss";
+
+$font-stack:   calibri, "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+$logo-url: '/assets/logo.png';
+$background1:beige;
+
 .siteLogo{
     height:120px;
     width: 100%;
-    background-image:url(/assets/logo.png);
+    background-image:url($logo-url);
     background-repeat: no-repeat;
     }
-     body{
-         font-family: calibri, "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-         font-size: 14pt;
-         color:#546E7A;
-     }
-     P{font-family: calibri, "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-         font-size: 14pt;
-         color:#546E7A;}
+
+body{
+    font-family: $font-stack;
+    font-size: 14pt;
+    color:#546E7A;
+    }
+
+P{font-family: calibri, "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-size: 14pt;
+    color:#546E7A;}
+
 .siteTitle{font-family: 'Open Sans', sans-serif;font-size:14pt;}
 
+.background1{
+    background-color:$background1;padding:10px;
+}
 .dropdown A{
         float: left;
         padding: 15px 15px;
@@ -22,3 +34,5 @@
         line-height: 20px;
         height: 45px;
 }
+
+ 

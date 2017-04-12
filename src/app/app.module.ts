@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
   
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MdButtonModule, MdCardModule, MdListModule, MdIconModule} from '@angular/material';
+import { MdButtonModule, MdCardModule, MdListModule, MdIconModule, MdInputModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,8 @@ import { BookLineComponent } from './book-line/book-line.component';
  import {LibraryService} from './library.service';
 import { BookingHistoryComponent } from './booking-history/booking-history.component';
 import { DanComponent } from './dan/dan.component';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { TitleComponent } from './title/title.component';
 
 
 
@@ -34,8 +36,8 @@ import { DanComponent } from './dan/dan.component';
     BookViewComponent,
     BookTileComponent,
     BookLineComponent,
-    BookingHistoryComponent,
-    DanComponent
+    BookingHistoryComponent,    
+    BreadcrumbsComponent, TitleComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -43,6 +45,7 @@ import { DanComponent } from './dan/dan.component';
      MdCardModule,
      MdListModule,
      MdIconModule.forRoot(),
+     MdInputModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

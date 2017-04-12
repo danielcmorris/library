@@ -1,0 +1,60 @@
+<style>
+ 
+  .cc li {
+    display: inline-block;
+    
+  }
+  
+  A {
+   
+  }
+  
+  .cc li+li:before {
+    content: "/\A0";
+    padding: 0 5px;
+    color: #ccc;
+  }
+  
+ ol {
+    display: block;
+    list-style-type: decimal;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+    margin:5px;
+}
+  @media (min-width: 768px) {
+    .cc {
+      width: 750px;
+    }
+  }
+   @media (min-width: 992px) {
+    .cc {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .cc {
+      width: 1170px;
+    }
+  }
+    
+  .cc {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .h{
+     padding:4px;
+  }
+</style>
+<div class="h">
+  <div class="cc">
+<ng-content></ng-content>      
+  </div>
+</div>
+
+ 

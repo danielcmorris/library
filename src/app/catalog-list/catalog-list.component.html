@@ -1,22 +1,23 @@
-<div style="background-color:teal;color:white">
+<app-title>Catalog</app-title>
+<div class="background1">
+  <app-breadcrumbs>
+    <ol>
+      <li><a routerLink="/home">Home</a></li>
+      <li>Catalog</li>
+    </ol>
+  </app-breadcrumbs>
+  <div class="container" style="padding:10px;margin-top:10px;margin-bottom:10px;">
+    <form class="form-inline">
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
+      <input class="form-control" style="width:90%" type="search" placeholder="Enter any part of a book's title" id="example-search-input">
+      <button type="submit" style="float:right;width:9%" class="btn btn-primary">Search</button>
+    </form>
 
-      <h1>
-        Catalog List
-      </h1>
-      <h3>{{subject}}</h3>
-    </div>
   </div>
-</div>
-</div>
-<div style="background-color:beige;padding:10px;">
-  <div class="container" style="background-color: white;padding:20px;border:lightgray solid 1px">
+  <div class="container" style="background-color: white;padding:10px;border:lightgray solid 1px">
+
     <div *ngFor="let item  of books">
       <app-book-line [book]="item"></app-book-line><br><br>
     </div>
   </div>
 </div>
- 
