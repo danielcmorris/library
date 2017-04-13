@@ -24,6 +24,17 @@ P{font-family: calibri, "Roboto","Helvetica Neue Light","Helvetica Neue",Helveti
 
 .siteTitle{font-family: 'Open Sans', sans-serif;font-size:14pt;}
 
+.bookTitle {
+    font-size: 24px;
+    font-weight: 400;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+.status-icons {
+  position: relative;
+  /* Adjust these values accordingly */
+  top: 5px;
+  left: -5px;
+}
 .background1{
     background-color:$background1;padding:10px;
 }

@@ -27,6 +27,8 @@ import { TitleComponent } from './title/title.component';
 import {LibraryService} from './library.service';
 import { BookListComponent } from './book-list/book-list.component';
 import { CatalogByAuthorComponent } from './catalog-by-author/catalog-by-author.component';
+import { TestPipe } from './pipes/test.pipe';
+import { StatusPipe } from './pipes/status.pipe';
 
 
 @NgModule({
@@ -42,7 +44,7 @@ import { CatalogByAuthorComponent } from './catalog-by-author/catalog-by-author.
     BookTileComponent,
     BookLineComponent,
     BookingHistoryComponent,    
-    BreadcrumbsComponent, TitleComponent, BookListComponent, CatalogByAuthorComponent
+    BreadcrumbsComponent, TitleComponent, BookListComponent, CatalogByAuthorComponent, TestPipe, StatusPipe
   ],
   imports: [
     BrowserAnimationsModule,

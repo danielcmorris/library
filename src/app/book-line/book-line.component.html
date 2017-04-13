@@ -1,10 +1,23 @@
-<div class="row">
+<div class="row"  >
   <div class="col-sm-2">
-    <img style="display:block" *ngIf="book.Url!=''" [src]="'https://d2rg9t5epa49og.cloudfront.net/'+book.Url" width="100" >
-    <div style="padding-left:20px"><a [routerLink]="['/catalog/view/',book.CallNumber]">GA1855</a></div>
+    <img style="display:block" *ngIf="book.Url!=''" [src]="'https://d2rg9t5epa49og.cloudfront.net/'+book.Url" width="100%">
+
   </div>
-  <div class="col-sm-2"><a [routerLink]="['/catalog/view/',book.Prefix, book.BookNumber]">{{book.Title}}</a></div>
-  <div class="col-sm-2"><a [routerLink]="['/authors/',book.Author]">{{book.Author}}</a></div>
-  <div class="col-sm-2"><a [routerLink]="['/catalog/',book.Subject]">{{book.Subject}}</a></div>
-  <div class="col-sm-2">{{book.Status}}</div>
+  <div class="col-sm-8">
+    <a [routerLink]="['/catalog/view/',book.Prefix, book.BookNumber]" class="bookTitle ">{{book.Title}}</a>
+
+    <div style="padding:10px;">
+      <ul style="list-style: none;">
+        <li><i class="material-icons status-icons" style="color:#106CC8">person</i>&nbsp; By <a [routerLink]="['/authors/',book.Author]">{{book.Author}}</a></li>
+        <li> <i class="material-icons status-icons" style="color:#106CC8">subject</i>&nbsp;Subject: <a [routerLink]="['/catalog/',book.Prefix]">{{book.Subject}}</a>          </li>
+        <li> <i class="material-icons status-icons" style="color:#106CC8">bookmark</i>&nbsp;Call Number: <a [routerLink]="['/catalog/',book.Prefix]">{{book.CallNumber}}</a>          </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <div style="padding:10px;" [innerHTML]="book.Status | status"></div>
+  </div>
 </div>
+<hr>
+
+ 
