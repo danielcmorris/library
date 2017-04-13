@@ -14,7 +14,7 @@ export class BookTileComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.book);
+    //console.log(this.book);
   }
   TrimNotes(note):string{
   let maxLength = 200;

@@ -1,12 +1,13 @@
-
-<app-title [description]="searchText">Catalog</app-title>
+<app-title [description]="searchText">{{author}}</app-title>
 <div class="background1">
   <app-breadcrumbs>
     <ol>
       <li><a routerLink="/">Home</a></li>
-      <li>Catalog</li>
+      <li><a routerLink="/catalog">Full Catalog</a></li>
+      <li>Works by {{author}}</li>
     </ol>
   </app-breadcrumbs>
+ 
   <div class="container" style="padding:10px;margin-top:10px;margin-bottom:10px;">
     <form [formGroup]="myForm" novalidate (ngSubmit)="Search(myForm.value, myForm.valid)" class="form-inline">
  

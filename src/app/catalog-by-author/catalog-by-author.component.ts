@@ -5,12 +5,12 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import {LibraryService} from '../library.service';
 
 @Component({
-  selector: 'app-catalog-list',
-  templateUrl: './catalog-list.component.html',
-  styleUrls: ['./catalog-list.component.scss']
+  selector: 'app-catalog-by-author',
+  templateUrl: './catalog-by-author.component.html',
+  styleUrls: ['./catalog-by-author.component.scss']
 })
-export class CatalogListComponent implements OnInit {
-  public sub: any;
+export class CatalogByAuthorComponent implements OnInit {
+  public author: any;
   public subject: any;
   public book: any;
   public books: any=[];
@@ -26,17 +26,17 @@ export class CatalogListComponent implements OnInit {
     private _fb: FormBuilder) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.subject = params['subject']; // (+) converts string 'id' to a number
-        
+    let params = this.route.params.subscribe(params => {
+      this.author = params['author']; 
+      console.log(this.author);  
     });
-    this.searchText = "Recent Additions"
+    this.searchText = ""
     this.myForm = new FormGroup(
     {
         searchBox: new FormControl('', [<any>Validators.required]),         
     });
  
-    this.Lib.getBooks().subscribe(data => {this.books=data },
+    this.Lib.getBooks('',this.author).subscribe(data => {this.books=data },
       err => {
         console.log("ERROR GETTING DATA!");
       });
@@ -51,7 +51,7 @@ export class CatalogListComponent implements OnInit {
     }
   }
   GetData(searchText:string){
-     this.Lib.getBooks(searchText).subscribe(data => {this.books=data ;
+     this.Lib.getBooks(searchText, this.author).subscribe(data => {this.books=data ;
      this.searchText = 'Found '+ this.books.length + ' searching for titles containing "'+ searchText+'"';},
       err => {
         console.log("ERROR GETTING DATA!");

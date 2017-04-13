@@ -1,3 +1,10 @@
+<style>
+  .subtitle{
+    font-size: 10pt;
+    color:white;
+    padding:10px 20px
+  }
+  </style>
 <div style="background-color:teal;color:white">
 
   <div class="container">
@@ -7,7 +14,7 @@
         <h1>
           <ng-content></ng-content>     
         </h1>
-        <h3>{{secondary}}</h3>
+        <div *ngIf="subtitle!=''" class="subtitle">{{description}}</div>
       </div>
     </div>
   </div>

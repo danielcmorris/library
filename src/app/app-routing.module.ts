@@ -5,6 +5,7 @@ import {CatalogListComponent} from './catalog-list/catalog-list.component';
 import {BookEditorComponent} from './book-editor/book-editor.component';
 import {RecentEditionsComponent} from './recent-editions/recent-editions.component';
 import {BookViewComponent} from './book-view/book-view.component';
+import {CatalogByAuthorComponent} from './catalog-by-author/catalog-by-author.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
     { path: 'catalog/view/:prefix/:booknumber', component:BookViewComponent },
     { path: 'catalog/recent', component: RecentEditionsComponent },
     { path: 'catalog/:subject', component: CatalogListComponent },
-    { path: 'authors/:author', component: CatalogListComponent },
+    { path: 'authors/:author', component: CatalogByAuthorComponent },
 
 
 ];

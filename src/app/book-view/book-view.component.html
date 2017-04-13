@@ -1,46 +1,59 @@
-<md-card>
-  <md-card-title-group>
+<app-title [description]="'By '+book.Author">{{book.Title}}</app-title>
+<div class="background1">
+  <div class="container">
+    <app-breadcrumbs>
+      <ol>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/catalog">Catalog</a></li>
+        <li>{{book.Title}}</li>
+      </ol>
+    </app-breadcrumbs>
+    <md-card>
+      <md-card-title-group>
 
-    <md-card-title>{{book.Title}}</md-card-title>
-    <md-card-subtitle>By {{book.Author}}</md-card-subtitle>
-  </md-card-title-group>
-  <md-card-content style="vertical-align: text-top;min-height: 400px">
-    <p>
-      <img *ngIf="book.Url!=''" ALIGN="Left" style="margin:10px" [src]="getUrl(book.Url)">
-      <span [innerHTML]="book.Notes"></span>
-    </p>
+        <md-card-title>{{book.Title}}</md-card-title>
+        <md-card-subtitle>By {{book.Author}}</md-card-subtitle>
+      </md-card-title-group>
+      <md-card-content style="vertical-align: text-top;min-height: 400px">
+        <p>
+          <img *ngIf="book.Url!=''" ALIGN="Left" style="margin:10px" [src]="getUrl(book.Url)">
+          <span [innerHTML]="book.Notes"></span>
+        </p>
 
-    <div>
-      <div style="float:right;width:40%;padding:20px;border:solid 1px lightgray">
-        <div style="width:200px;margin:auto;">
-          <button md-raised-button style="width:100%;background-color:#106CC8;color:white;margin:10px;" [routerLink]="['/catalog/view/',book.Prefix, book.BookNumber]">Request</button>
-          <button md-raised-button style="width:100%;color:black;margin:10px;" [routerLink]="['/catalog']">Catalog</button>
+        <div>
+          <div style="float:right;width:40%;padding:20px;border:solid 1px lightgray">
+            <div style="width:200px;margin:auto;">
+              <button md-raised-button style="width:100%;background-color:#106CC8;color:white;margin:10px;" [routerLink]="['/catalog/view/',book.Prefix, book.BookNumber]">Request</button>
+              <button md-raised-button style="width:100%;color:black;margin:10px;" [routerLink]="['/catalog']">Catalog</button>
+            </div>
+          </div>
+          <md-list>
+            <md-list-item>
+
+              <i class="material-icons" style="color:#106CC8">person</i>&nbsp; By <a [routerLink]="'/authors/'+book.Author">{{book.Author}}</a>
+            </md-list-item>
+            <md-list-item>
+              <i class="material-icons">subject</i>&nbsp;Subject: {{book.Subject}} </md-list-item>
+            <md-list-item>
+              <i class="material-icons">account_balance</i>&nbsp;Call Number: {{book.Prefix}}{{book.BookNumber}} </md-list-item>
+            <md-list-item> <i class="material-icons">event_available</i>&nbsp;Availability: Currently {{book.Status}}</md-list-item>
+          </md-list>
         </div>
-      </div>
-      <md-list>
-        <md-list-item>
-          <i class="material-icons">person</i>&nbsp;By {{book.Author}}
-        </md-list-item>
-        <md-list-item>
-          <i class="material-icons">subject</i>&nbsp;Subject: {{book.Subject}} </md-list-item>
-        <md-list-item>
-          <i class="material-icons">account_balance</i>&nbsp;Call Number: {{book.Prefix}}{{book.BookNumber}} </md-list-item>
-        <md-list-item> <i class="material-icons">event_available</i>&nbsp;Availability: Currently {{book.Status}}</md-list-item>
-      </md-list>
-    </div>
 
 
-  </md-card-content>
-  <md-card-actions>
+      </md-card-content>
+      <md-card-actions>
 
-  </md-card-actions>
-</md-card>
-<div>&nbsp;</div>
-<md-card>
+      </md-card-actions>
+    </md-card>
+    <div>&nbsp;</div>
+    <md-card>
 
-  <md-card-title>History</md-card-title>
+      <md-card-title>History</md-card-title>
 
-  <md-card-content>
-    <app-booking-history [prefix]="book.Prefix" [booknumber]="book.BookNumber"></app-booking-history>
-  </md-card-content>
-</md-card>
+      <md-card-content>
+        <app-booking-history [prefix]="book.Prefix" [booknumber]="book.BookNumber"></app-booking-history>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

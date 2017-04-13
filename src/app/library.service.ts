@@ -15,9 +15,15 @@ export class LibraryService {
   constructor(private http: Http) { }
 
 
-  getBooks(): Observable<Book[]> {
+  getBooks(title?:string,author?:string, prefix?:string): Observable<Book[]> {
 
-    return this.http.get(this.apiHost + '/api/library/search')
+    if(title===undefined) title='';
+    if(author===undefined) author='';
+    if(prefix===undefined) prefix='';
+
+
+    let url=`${this.apiHost}/api/library/search?prefix=${prefix}&author=${author}&title=${title}`
+    return this.http.get(url)
       .map(res => res.json());
 
     //  return this.books;
