@@ -41,6 +41,7 @@ export class CatalogByAuthorComponent implements OnInit {
         console.log("ERROR GETTING DATA!");
       });
 
+
   }   
   Search(form:any,isValid:boolean){
     //console.log(form);
@@ -51,7 +52,8 @@ export class CatalogByAuthorComponent implements OnInit {
     }
   }
   GetData(searchText:string){
-     this.Lib.getBooks(searchText, this.author).subscribe(data => {this.books=data ;
+     this.Lib.getBooks(searchText, this.author).subscribe(data => {
+       this.books=data ;
      this.searchText = 'Found '+ this.books.length + ' searching for titles containing "'+ searchText+'"';},
       err => {
         console.log("ERROR GETTING DATA!");
