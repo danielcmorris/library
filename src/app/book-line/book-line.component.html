@@ -10,7 +10,7 @@
       <ul style="list-style: none;">
         <li><i class="material-icons status-icons" style="color:#106CC8">person</i>&nbsp; By <a [routerLink]="['/authors/',book.Author]">{{book.Author}}</a></li>
         <li> <i class="material-icons status-icons" style="color:#106CC8">subject</i>&nbsp;Subject: <a [routerLink]="['/catalog/',book.Prefix]">{{book.Subject}}</a>          </li>
-        <li> <i class="material-icons status-icons" style="color:#106CC8">bookmark</i>&nbsp;Call Number: <a [routerLink]="['/catalog/',book.Prefix]">{{book.CallNumber}}</a>          </li>
+        <li> <i class="material-icons status-icons" style="color:#106CC8">bookmark</i>&nbsp;Call Number: <a [routerLink]="['/catalog/view/',book.Prefix, book.BookNumber]">{{book.CallNumber}}</a>          </li>
       </ul>
     </div>
   </div>

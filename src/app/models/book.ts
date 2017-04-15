@@ -12,7 +12,8 @@ export class Book {
     Subject:string;
     SubjectId:number;
     Title:string;
+    Author:string;
     Url:string;
-
+constructor(){}
 }
 

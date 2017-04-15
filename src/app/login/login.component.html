@@ -1,0 +1,21 @@
+<div class="background1" style="height:100vh;">
+  <div style="width:300px;margin-left:auto;margin-right:auto;margin-top:20px">
+    <md-card>
+      <md-card-title>Library Login</md-card-title>
+      <md-card-content style="background-color:white;color:darkgray;">
+        <md-input-container style="width:100%">
+          <input mdInput placeholder="Username" value="">
+        </md-input-container>
+        <md-input-container style="width:100%">
+          <input mdInput placeholder="Password" type="password" value="">
+        </md-input-container>
+      </md-card-content>
+      <md-card-actions>
+        <button md-raised-button color="primary" (click)="Login()" style="width:100%">Sign In</button>
+      </md-card-actions>
+    </md-card>
+    <div style="width:100%;padding:10px;text-align:center">
+  <a [routerLink]="'home'">Lost password?</a> | <a [routerLink]="'home'">Become Member</a> 
+    </div>
+  </div>
+</div>

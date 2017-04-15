@@ -2,11 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';  
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
-
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 //THIRD PARTY & Dependants
-import { MdButtonModule, MdCardModule, MdListModule, MdIconModule, MdInputModule} from '@angular/material';
+import { MdButtonModule, MdCardModule, MdListModule, MdIconModule, 
+   MdToolbarModule} from '@angular/material';
+import { MdInputModule } from '@angular/material';
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 //COMPONENTS
@@ -29,11 +31,13 @@ import { BookListComponent } from './book-list/book-list.component';
 import { CatalogByAuthorComponent } from './catalog-by-author/catalog-by-author.component';
 import { TestPipe } from './pipes/test.pipe';
 import { StatusPipe } from './pipes/status.pipe';
-
+import { Settings} from './app.settings';
+import { CatalogBySubjectComponent } from './catalog-by-subject/catalog-by-subject.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-  
+     
     AppComponent,
     HomeComponent,
     CatalogListComponent,
@@ -44,13 +48,15 @@ import { StatusPipe } from './pipes/status.pipe';
     BookTileComponent,
     BookLineComponent,
     BookingHistoryComponent,    
-    BreadcrumbsComponent, TitleComponent, BookListComponent, CatalogByAuthorComponent, TestPipe, StatusPipe
+    BreadcrumbsComponent, TitleComponent, BookListComponent, CatalogByAuthorComponent, TestPipe, StatusPipe, CatalogBySubjectComponent, LoginComponent
   ],
   imports: [
+    
     BrowserAnimationsModule,
      MdButtonModule,
      MdCardModule,
      MdListModule,
+     MdToolbarModule,
      MdIconModule.forRoot(),
      MdInputModule,
     BrowserModule,
@@ -59,7 +65,7 @@ import { StatusPipe } from './pipes/status.pipe';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [LibraryService],
+  providers: [LibraryService,Settings],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

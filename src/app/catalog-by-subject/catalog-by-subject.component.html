@@ -1,0 +1,23 @@
+<app-title [description]="searchText">{{title}}</app-title>
+<div class="background1">
+  <app-breadcrumbs>
+    <ol>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/catalog">Full Catalog</a></li>
+      <li>Subject: {{title}}</li>
+    </ol>
+  </app-breadcrumbs>
+ 
+  <div class="container" style="padding:10px;margin-top:10px;margin-bottom:10px;">
+    <form [formGroup]="myForm" novalidate (ngSubmit)="Search(myForm.value, myForm.valid)" class="form-inline">
+ 
+      <input class="form-control" 
+       formControlName="searchBox" 
+       style="width:90%" type="search" placeholder="Enter any part of a book's title" id="example-search-input">
+      <button type="button" (click)="Search(myForm.value, myForm.valid)" style="float:right;width:9%" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+  <div class="container" style="background-color: white;padding:10px;border:lightgray solid 1px">
+      <app-book-list [books]="books"></app-book-list>
+  </div>
+</div>
