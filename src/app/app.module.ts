@@ -5,7 +5,8 @@ import { HttpModule } from '@angular/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 //THIRD PARTY & Dependants
-import { MdButtonModule, MdCardModule, MdListModule, MdIconModule, 
+import { MdButtonModule, MdCardModule, MdListModule, MdIconModule, MdProgressSpinnerModule,
+  MdSelectModule,
    MdToolbarModule} from '@angular/material';
 import { MdInputModule } from '@angular/material';
 
@@ -59,6 +60,8 @@ import { LoginComponent } from './login/login.component';
      MdToolbarModule,
      MdIconModule.forRoot(),
      MdInputModule,
+     MdSelectModule,
+     MdProgressSpinnerModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

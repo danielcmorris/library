@@ -5,6 +5,11 @@ $font-stack:   calibri, "Roboto","Helvetica Neue Light","Helvetica Neue",Helveti
 $logo-url: '/assets/logo.png';
 $background1:beige;
 
+$font-size1:30px;
+$font-size2:28px;
+$font-size3:22px;
+$font-size4:10px;
+
 .siteLogo{
     height:120px;
     width: 100%;
@@ -38,6 +43,30 @@ P{font-family: calibri, "Roboto","Helvetica Neue Light","Helvetica Neue",Helveti
 .background1{
     background-color:$background1;padding:10px;
 }
+.searchResultsContainer{
+    background-color:white;padding:10px;border:lightgray solid 1px;min-height:200px
+}
+.searchFormContainer{
+    padding:0px;margin-top:10px;margin-bottom:10px;
+    background-color: white;
+    border:solid 1px lightgray;
+    .searchBox{
+        border: 1px solid #fff; 
+        padding-left:20px;
+        height:50px;
+        font-size: $font-size3;
+        width:100%;
+        outline-width: 0;
+    } 
+}
+
+.searchResultsFailure{
+    font-size: $font-size2;
+    text-align: center;
+    padding:15px;
+
+}
+
 .dropdown A{
         float: left;
         padding: 15px 15px;

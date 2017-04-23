@@ -1,6 +1,26 @@
- <div *ngFor="let item  of books" style="padding:5px">
-      <app-book-line [book]="item"></app-book-line> 
-  </div>
-  <style>
+<div id="bookListWaiter" *ngIf="showWaiter">
+ 
+    <md-spinner class="interiordiv" color="accent"></md-spinner>
+ 
+</div> 
+<div *ngFor="let item  of books" style="padding:5px">
+  <app-book-line [book]="item"></app-book-line>
+</div>
+<div *ngIf="showFailure" style="display:none" class="searchResultsFailure">
+  Sorry, but we didn't find any results for your search.
+</div>
+<style>
+  #bookListWaiter {
+    min-height: 100%;
+    min-width: 100%;
+    padding: 50px;
+    display: flex;
+    align-items: stretch;
+    position: relative;
+  }
   
+  .interiordiv {
+    width: 100px;
+    margin: 15px auto 15px auto;
+  }
 </style>

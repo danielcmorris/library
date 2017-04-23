@@ -19,7 +19,7 @@ export class CatalogBySubjectComponent implements OnInit {
   public searchText: string;
   public title: string = 'Catalog by Subject';
   public myForm: FormGroup; // our model driven form
-
+  public showWaiter: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +34,7 @@ export class CatalogBySubjectComponent implements OnInit {
     this.searchText = ""
     this.myForm = new FormGroup(
       {
-        searchBox: new FormControl('', [<any>Validators.required]),
+        searchBox: new FormControl('', [<any>Validators.required])
       });
 
 
@@ -43,21 +43,21 @@ export class CatalogBySubjectComponent implements OnInit {
 
     // IF ROUTE PARAMETERS CHANGE BUT COMPONENT REMAINS THE SAME, ngInit will not be called again, but this param subscription WILL.
     let params = this.route.params.subscribe(params => {
-       this.searchText=''
+      this.searchText = ''
 
-       let sb =this.myForm.controls.searchBox
-       
+      let sb = this.myForm.controls.searchBox
+
       sb.reset()
       console.log(sb.value)
       this.subject = params['subject'];
       this.Lib.getSubjects().subscribe(data => {
-         
-        let s=new Subject();
+
+        let s = new Subject();
         console.log(s)
-        s.Prefix = '123' 
-         let mySubject:Array<Subject> =[];
-         mySubject.push(s);
-          mySubject = data.filter((v: Subject) => { return v['Prefix'] == this.subject });
+        s.Prefix = '123'
+        let mySubject: Array<Subject> = [];
+        mySubject.push(s);
+        mySubject = data.filter((v: Subject) => { return v['Prefix'] == this.subject });
         console.log(mySubject);
 
         if (mySubject.length > 0) {
@@ -66,16 +66,16 @@ export class CatalogBySubjectComponent implements OnInit {
         }
 
       })
-      this.Lib.getBooks('', '', this.subject).subscribe(data => { this.books = data },
+      this.Lib.getBooks('', '', this.subject).subscribe(data => { this.books = data; this.showWaiter = false; },
         err => {
           console.log("ERROR GETTING DATA!");
         });
 
     });
 
-    
 
-    
+
+
 
   }
   Search(form: any, isValid: boolean) {
@@ -86,16 +86,23 @@ export class CatalogBySubjectComponent implements OnInit {
       this.GetData(form.searchBox);
     }
   }
-  GetData(searchText: string) {
-     this.Lib.getBooks(searchText, '', this.subject).subscribe(data => { 
-       this.books = data 
-       
-       this.searchText = 'Found ' + this.books.length + ' searching for titles containing "' + searchText + '"';
-    },
-        err => {
-          console.log("ERROR GETTING DATA!");
-        });
+  ClearSearch(form: any) {
+    let sb = this.myForm.controls.searchBox
 
-    
+    sb.reset()
+    this.searchText = '';
+ 
+  }
+  GetData(searchText: string) {
+    this.Lib.getBooks(searchText, '', this.subject).subscribe(data => {
+      this.books = data
+
+      this.searchText = 'Found ' + this.books.length + ' searching for titles containing "' + searchText + '"';
+    },
+      err => {
+        console.log("ERROR GETTING DATA!");
+      });
+
+
   }
 }

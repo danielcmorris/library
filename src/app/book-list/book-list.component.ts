@@ -7,9 +7,22 @@ import {Book} from '../models/book';
 })
 export class BookListComponent implements OnInit {
   @Input() books:Book[]
+  @Input() spinner:boolean = true;
+  showWaiter:boolean = true;
+  showFailure:boolean = true;
+  private SearchInitiated:boolean = true;
+
   constructor() { }
 
   ngOnInit() {
+    
+  }
+  ngOnChanges(){
+
+    if(this.spinner){this.showWaiter=true;}else{this.showWaiter=false;}
+    if(!this.showWaiter && this.books.length===0){
+      this.showFailure=true;
+    }
   }
 
 }

@@ -5,6 +5,7 @@ import { environment } from '../environments/environment';
 export class Settings {
    
     get ApiEndpoint(){return environment.API_URL  }
+    get ImageServerEndpoint(){ return environment.IMAGE_URL}
           
 }
 

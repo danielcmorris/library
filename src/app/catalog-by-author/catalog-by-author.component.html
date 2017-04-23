@@ -8,16 +8,16 @@
     </ol>
   </app-breadcrumbs>
  
-  <div class="container" style="padding:10px;margin-top:10px;margin-bottom:10px;">
-    <form [formGroup]="myForm" novalidate (ngSubmit)="Search(myForm.value, myForm.valid)" class="form-inline">
- 
-      <input class="form-control"
-       formControlName="searchBox" 
-       style="width:90%" type="search" placeholder="Enter any part of a book's title" id="example-search-input">
-      <button type="button" (click)="Search(myForm.value, myForm.valid)" style="float:right;width:9%" class="btn btn-primary">Search</button>
+   <div class="container searchFormContainer">
+    <form [formGroup]="myForm" novalidate (ngSubmit)="Search(myForm.value, myForm.valid)" class="form-inline">      
+      <i (click)="Search(myForm.value, myForm.valid)" style="float:right;width:70px;font-size:26pt;cursor:pointer;padding-top:20px" class="material-icons">search</i>
+      <div style="width:100%;padding-left:100px;width:100%;margin-left:-100px">
+        <input onfocus="this.placeholder = ''"  class="searchFormContainer searchBox" formControlName="searchBox" type="search" placeholder="Enter any part of a book's title">
+      </div>
     </form>
   </div>
-  <div class="container" style="background-color: white;padding:10px;border:lightgray solid 1px">
-      <app-book-list [books]="books"></app-book-list>
+
+  <div class="container searchResultsContainer">
+      <app-book-list [books]="books" [spinner]="showWaiter"></app-book-list>
   </div>
 </div>

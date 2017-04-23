@@ -1,3 +1,65 @@
-<p>
-  book-editor works!
-</p>
+<style>
+  .wideInput {
+   
+    display: block;
+    padding: 4px;
+  }
+</style>
+
+
+<app-title>{{PageTitle}}</app-title>
+<div class="background1">
+  <div class="container">
+    <form (ngSubmit)="save()" [formGroup]="bookForm">
+      <md-card>
+        <md-card-title>{{CardTitle}}</md-card-title>
+        <md-card-content style="padding-left:20px">
+
+          <md-input-container class="wideInput">
+            <label for="txtTitle">Title</label>
+            <input id="txtTitle" mdInput formControlName="Title">
+          </md-input-container>
+
+          <md-input-container class="wideInput" hintLabel="(if more than one author, separate with an &)">
+            <label for="txtAuthor">Author</label>
+            <input mdInput id="txtAuthor" formControlName="Author">
+          </md-input-container>
+          <div  class="wideInput" style="margin-top:10px;" >
+          <label for="drpSubjectId">Subject</label>
+          <md-select id="drpSubjectId" class="wideInput" formControlName="SubjectId">
+            <md-option *ngFor="let subject of Subjects" [value]="subject.SubjectId">{{ subject.Name }}</md-option>
+          </md-select>
+          </div>
+          <md-input-container class="wideInput" >
+            <label>Summary</label>
+            <textarea mdInput formControlName="Notes"></textarea>
+          </md-input-container>
+          <div class="wideInput">
+            <button style="float:right" md-raised-button color="warn" type="reset">Reset</button>
+            <button md-raised-button color="primary" type="submit">Save</button>
+            
+          </div>
+
+          
+          <div style="margin-top:20px; " *ngIf="book.CallNumber!=''" >
+            <div >
+             <label>Cover Picture</label>
+                <img *ngIf="book.Url" [src]="book.Url" style="display:block"> 
+            </div>    
+            <div>            
+              <label>
+                <span class="mat-primary mat-raised-button">Upload Image</span>
+                 <input style="display:none" type="file" id="myFile" name="myFile"  (change)="fileChange($event)" placeholder="Upload file" accept=".png,.gif,.jpg,.jpeg">
+            </label>
+            <button md-raised-button color="warn" (click)="clearImage()">Clear Image</button>
+            </div>
+          </div>
+        </md-card-content>
+        <md-card-footer> </md-card-footer>
+      </md-card>
+    </form>
+
+    {{ bookForm.get('Title').value }}
+  </div>
+
+</div>
