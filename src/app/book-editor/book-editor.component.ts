@@ -19,32 +19,41 @@ export class BookEditorComponent implements OnInit {
   private apiEndPoint: string = this.Settings.ApiEndpoint + 'api/image'
   private imageEndpoint: string = this.Settings.ImageServerEndpoint
   public book: Book = new Book();
-
+  public showWaiter: boolean = false;
+  public showPrimary: boolean = true;
+  public showImage: boolean = false;
+  public showClearImage:boolean = false
   public bookForm: FormGroup;
   public PageTitle: string = "New Catalog Addition"
   public CardTitle: string = 'Add a new title to the catalog';
+  public StatusMessage:string = "loading..."
+public FileName:string ='';
+
+
+  public fileList: FileList;
+
   constructor(private http: Http, private Settings: Settings,
     private fb: FormBuilder, private ls: LibraryService,
     private route: ActivatedRoute, private router: Router, ) {
 
-
-    this.bookForm = fb.group({
-      BookId: 0,
-      CallNumber: '',
-      BookNumber: '',
-      CreateBy: "CurrentUser",
-      CreateDate: new Date,
-      ModifiedBy: 'CurrentUser',
-      ModifiedDate: new Date(),
-      Notes: '',
-      Prefix: '',
-      Status: 'Active',
-      Subject: '',
-      SubjectId: ['', Validators.required],
-      Title: ['', Validators.required],
-      Author: ['', Validators.required],
-      Url: ''
-    })
+      this.book.Url = this.imageEndpoint + 'assets/book.png';
+      this.bookForm = fb.group({
+        BookId: 0,
+        CallNumber: '',
+        BookNumber: '',
+        CreateBy: "CurrentUser",
+        CreateDate: new Date,
+        ModifiedBy: 'CurrentUser',
+        ModifiedDate: new Date(),
+        Notes: '',
+        Prefix: '',
+        Status: 'Active',
+        Subject: '',
+        SubjectId: ['', Validators.required],
+        Title: ['', Validators.required],
+        Author: ['', Validators.required],
+        Url: ''
+      })
 
   }
 
@@ -101,21 +110,29 @@ export class BookEditorComponent implements OnInit {
 
     this.CardTitle = this.book.Title;
     this.PageTitle = this.book.Title;
+   // this.showPrimary = false;
+    this.showWaiter = true
+    setTimeout(() => {
+      this.showWaiter = false;
+      this.showImage = true;
+    }, 2000);
   }
   clearImage() {
 
     this.book.Url = this.imageEndpoint + 'assets/book.png';
   }
 
-
-  fileChange(event) {
-    let fileList: FileList = event.target.files;
-    if (fileList.length > 0) {
-      let file: File = fileList[0];
+  resetFileUpload(){
+    this.FileName='';
+    this.fileList = null;
+  }
+  FileUpload() {
+    if (this.fileList.length > 0) {
+      let file: File = this.fileList[0];
       let formData: FormData = new FormData();
       formData.append('uploadFile', file, file.name);
       formData.append('callnumber', this.book.CallNumber);
-
+      this.FileName = file.name;
       let headers = new Headers();
 
       headers.append('Content-Type', 'multipart/form-data');
@@ -123,6 +140,9 @@ export class BookEditorComponent implements OnInit {
 
 
       //let options = new RequestOptions();
+
+      this.showWaiter = true;
+      this.StatusMessage = "Loading Image";
 
 
       this.http.post(`${this.apiEndPoint}`, formData, headers)
@@ -133,11 +153,21 @@ export class BookEditorComponent implements OnInit {
           console.log('success');
           console.log(data);
           this.book.Url = this.Settings.ImageServerEndpoint + data;
-
+          this.showImage=true;
+          this.showWaiter=false;
         },
         error => console.log(error)
         )
     }
+  }
+  fileChange(event) {
+    this.fileList = event.target.files;
+    if (this.fileList.length > 0) {
+      let file: File = this.fileList[0];
+      
+      this.FileName = file.name;
+      }
+
   }
 
 }

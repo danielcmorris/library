@@ -2,15 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';  
 import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 //THIRD PARTY & Dependants
-import { MdButtonModule, MdCardModule, MdListModule, MdIconModule, MdProgressSpinnerModule,
-  MdSelectModule,
+import { MdButtonModule, MdCardModule, 
+  MdListModule, MdIconModule, MdProgressSpinnerModule,
+  MdSelectModule, 
    MdToolbarModule} from '@angular/material';
 import { MdInputModule } from '@angular/material';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
+
 
 //COMPONENTS
 import { AppComponent } from './app.component';
@@ -25,6 +29,7 @@ import { BookLineComponent } from './book-line/book-line.component';
 import { BookingHistoryComponent } from './booking-history/booking-history.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { TitleComponent } from './title/title.component';
+import { ProfileComponent } from './useraccount/profile/profile.component';
 
 //DATA SERVICES
 import {LibraryService} from './library.service';
@@ -49,7 +54,13 @@ import { LoginComponent } from './login/login.component';
     BookTileComponent,
     BookLineComponent,
     BookingHistoryComponent,    
-    BreadcrumbsComponent, TitleComponent, BookListComponent, CatalogByAuthorComponent, TestPipe, StatusPipe, CatalogBySubjectComponent, LoginComponent
+    BreadcrumbsComponent, 
+    TitleComponent, 
+    BookListComponent,
+     CatalogByAuthorComponent, TestPipe, 
+     StatusPipe, CatalogBySubjectComponent, 
+     LoginComponent,
+     ProfileComponent
   ],
   imports: [
     
@@ -65,6 +76,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxErrorsModule ,
     HttpModule,
     AppRoutingModule
   ],

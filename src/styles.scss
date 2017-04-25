@@ -21,8 +21,9 @@ body{
     font-family: $font-stack;
     font-size: 14pt;
     color:#546E7A;
+    background-color: $background1;
     }
-
+html{  background-color: $background1;}
 P{font-family: calibri, "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
     font-size: 14pt;
     color:#546E7A;}

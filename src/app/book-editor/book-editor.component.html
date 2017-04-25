@@ -1,6 +1,5 @@
 <style>
   .wideInput {
-   
     display: block;
     padding: 4px;
   }
@@ -11,55 +10,124 @@
 <div class="background1">
   <div class="container">
     <form (ngSubmit)="save()" [formGroup]="bookForm">
-      <md-card>
+      <md-card *ngIf="showPrimary">
         <md-card-title>{{CardTitle}}</md-card-title>
         <md-card-content style="padding-left:20px">
 
-          <md-input-container class="wideInput">
-            <label for="txtTitle">Title</label>
-            <input id="txtTitle" mdInput formControlName="Title">
-          </md-input-container>
+          <div>
+            <md-input-container class="wideInput">
+              <label for="txtTitle">Title</label>
+              <input id="txtTitle" mdInput formControlName="Title">
+              <md-error>
+                You must enter the title of the book.
+              </md-error>
+            </md-input-container>
+            <md-input-container class="wideInput" hintLabel="(if more than one author, separate with an &)">
+              <label for="txtAuthor">Author</label>
 
-          <md-input-container class="wideInput" hintLabel="(if more than one author, separate with an &)">
-            <label for="txtAuthor">Author</label>
-            <input mdInput id="txtAuthor" formControlName="Author">
-          </md-input-container>
-          <div  class="wideInput" style="margin-top:10px;" >
-          <label for="drpSubjectId">Subject</label>
-          <md-select id="drpSubjectId" class="wideInput" formControlName="SubjectId">
-            <md-option *ngFor="let subject of Subjects" [value]="subject.SubjectId">{{ subject.Name }}</md-option>
-          </md-select>
-          </div>
-          <md-input-container class="wideInput" >
-            <label>Summary</label>
-            <textarea mdInput formControlName="Notes"></textarea>
-          </md-input-container>
-          <div class="wideInput">
-            <button style="float:right" md-raised-button color="warn" type="reset">Reset</button>
-            <button md-raised-button color="primary" type="submit">Save</button>
-            
+              <input mdInput id="txtAuthor" formControlName="Author">
+              <md-error>
+                You need to enter the author of the book
+              </md-error>
+            </md-input-container>
+
+
+            <div class="wideInput" style="margin-top:10px;">
+              <label for="drpSubjectId">Subject</label>
+              <md-select id="drpSubjectId" class="wideInput" formControlName="SubjectId">
+                <md-option 
+                  *ngFor="let subject of Subjects" 
+                  [value]="subject.SubjectId">{{ subject.Name }}</md-option>
+              </md-select>
+              <div *ngIf="!bookForm.get('SubjectId').valid && bookForm.get('SubjectId').touched" style="color:#f44336;font-size:75%">
+                You have to select a subject
+              </div>
+            </div>
+
+            <md-input-container class="wideInput">
+              <label>Summary</label>
+              <textarea mdInput formControlName="Notes"></textarea>
+            </md-input-container>
+            <div class="wideInput">
+              <button style="float:right" tabindex="-1" md-raised-button color="warn" type="reset">Reset</button>
+              <button md-raised-button color="primary" *ngIf="bookForm.valid && bookForm.dirty" type="submit">Save</button>
+              <button md-raised-button color="primary" disabled *ngIf="!bookForm.touched || !bookForm.valid">Save</button>
+
+            </div>
           </div>
 
-          
-          <div style="margin-top:20px; " *ngIf="book.CallNumber!=''" >
-            <div >
-             <label>Cover Picture</label>
-                <img *ngIf="book.Url" [src]="book.Url" style="display:block"> 
-            </div>    
-            <div>            
+
+        </md-card-content>
+      </md-card>
+
+
+     
+      <p></p>
+
+      <md-card *ngIf="showWaiter">
+        <md-card-title>Please wait a moment...</md-card-title>
+        <md-card-content style="padding-left:20px">
+          <div id="Waiter">
+
+            <md-spinner class="interiordiv" color="accent"></md-spinner>
+
+
+          </div>
+          <div style="text-align: center">
+            <h3>{{StatusMessage}}</h3>
+          </div>
+        </md-card-content>
+      </md-card>
+      <p></p>
+      <md-card *ngIf="showImage">
+        <md-card-title>Cover Image for {{book.Title}}</md-card-title>
+        <md-card-content style="padding-left:20px">
+          <div style="margin-top:20px;min-height: 600px;" *ngIf="book.CallNumber!=''">
+            <img *ngIf="book.Url" [src]="book.Url" style="display:block; margin-left:auto;margin-right:auto">
+            <div style="width:300px;margin-left:auto;margin-right:auto">
               <label>
-                <span class="mat-primary mat-raised-button">Upload Image</span>
-                 <input style="display:none" type="file" id="myFile" name="myFile"  (change)="fileChange($event)" placeholder="Upload file" accept=".png,.gif,.jpg,.jpeg">
-            </label>
-            <button md-raised-button color="warn" (click)="clearImage()">Clear Image</button>
+                    <span class="mat-primary mat-raised-button">Select Image</span>
+                    <input style="display:none" type="file" id="myFile" name="myFile"  (change)="fileChange($event)" placeholder="Upload file" accept=".png,.gif,.jpg,.jpeg">
+                </label>
+
+              <button md-raised-button color="accent" *ngIf="FileName===''" disabled>Upload {{FileName}}</button>
+              <button md-raised-button *ngIf="FileName===''" disabled>Reset</button>
+
+              <button md-raised-button color="accent" *ngIf="FileName!=''" (click)="FileUpload()">Upload</button>
+              <button md-raised-button *ngIf="FileName!=''" (click)="resetFileUpload()">Reset</button>
+
+              <button md-raised-button color="warn" *ngIf="book.Url!=imageEndpoint + 'assets/book.png'" (click)="clearImage()">Delete Image</button>
+
             </div>
           </div>
         </md-card-content>
-        <md-card-footer> </md-card-footer>
       </md-card>
     </form>
 
-    {{ bookForm.get('Title').value }}
   </div>
 
-</div>
+  <style>
+    #Waiter {
+      min-height: 100%;
+      min-width: 100%;
+      padding: 50px;
+      display: flex;
+      align-items: stretch;
+      position: relative;
+    }
+    
+    .interiordiv {
+      width: 100px;
+      margin: 15px auto 15px auto;
+    }
+  </style>
+
+   <fieldset>
+        <legend>My bookForm</legend>
+        <ul>
+          <li>{{bookForm.dirty }}</li>
+          <li>{{bookForm.touched }}</li>
+          <li>Valid: {{bookForm.valid }}</li>
+          <li>{{bookForm.value | json}}</li>
+        </ul>
+      </fieldset>

@@ -1,0 +1,46 @@
+<p>
+  profile works!
+</p>
+<form (ngSubmit)="save()" [formGroup]="profileForm">
+
+  <div class="container">
+    <div><label for="FirstName">FirstName:<input id="FirstName" formControlName="FirstName" class="form-control" type="text"></label></div>
+    <div><label for="LastName">LastName<input id="LastName"  formControlName="LastName" class="form-control" type="text"></label></div>
+    <div><label for="Phone">Phone<input id="Phone"  formControlName="Phone" class="form-control" type="text"></label></div>
+    <div><label for="Email">Email<input id="Email"  formControlName="Email" class="form-control" type="text"></label></div>
+    <div  formGroupName="address">
+      <fieldset>
+        <legend>Address</legend>
+        <div><label for="StreetAddress1"><input id="StreetAddress1"  formControlName="StreetAddress1" class="form-control" type="text"></label></div>
+        <div><label for="StreetAddress2"><input id="StreetAddress2"  formControlName="StreetAddress2" class="form-control" type="text"></label></div>
+        <div><label for="Cotu"><input id="City"  formControlName="City" class="form-control" type="text"></label></div>
+        <div><label for="State"><input id="State"  formControlName="State" class="form-control" type="text"></label></div>
+        <div><label for="PostalCode"><input id="PostalCode"  formControlName="PostalCode" class="form-control" type="text"></label></div>
+        <div><label for="Country"><input id="Country"  formControlName="Country" class="form-control" type="text"></label></div>
+
+      </fieldset>
+    </div>
+
+
+  </div>
+</form>
+<fieldset>
+  <legend>profileForm</legend>
+  <ul>
+      <li>{{profileForm.dirty }}</li>
+      <li>{{profileForm.touched  }}</li>
+      <li>{{profileForm.valid }}</li>
+      <li>{{profileForm.value | json}}</li>
+  </ul>
+</fieldset>
+
+<fieldset>
+  <legend>profileForm.controls.address</legend>
+  <ul>
+      <li>{{profileForm.controls.address.dirty }}</li>
+      <li>{{profileForm.controls.address.touched  }}</li>
+      <li>{{profileForm.controls.address.valid }}</li>
+      <li>{{profileForm.controls.address.value | json}}</li>
+  </ul>
+</fieldset>
+ 

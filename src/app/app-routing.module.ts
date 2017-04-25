@@ -8,6 +8,7 @@ import {BookViewComponent} from './book-view/book-view.component';
 import {CatalogByAuthorComponent} from './catalog-by-author/catalog-by-author.component';
 import {CatalogBySubjectComponent} from './catalog-by-subject/catalog-by-subject.component';
 import {LoginComponent} from './login/login.component';
+import { ProfileComponent } from './useraccount/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -18,11 +19,12 @@ const routes: Routes = [
     { path: 'catalog', component: CatalogListComponent },
     { path: 'collection/add', component: BookEditorComponent },    
     { path: 'collection/edit/:prefix/:booknumber', component:BookEditorComponent },
-     { path: 'catalog/view/:prefix/:booknumber', component:BookViewComponent },
+    { path: 'catalog/view/:prefix/:booknumber', component:BookViewComponent },
     { path: 'catalog/recent', component: RecentEditionsComponent },
     { path: 'catalog/:subject', component: CatalogBySubjectComponent },
     { path: 'authors/:author', component: CatalogByAuthorComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'account', component:ProfileComponent }
 
 
 ];
